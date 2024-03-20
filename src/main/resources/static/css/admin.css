@@ -1,0 +1,51 @@
+.navbar-custom {
+    background-color: #2b8005;
+  }
+
+  .navbar-custom .navbar-nav .nav-link {
+    color: #bfeaab;
+  }
+
+  .navbar-custom .navbar-toggler-icon {
+    background-color: #bfeaab;
+  }
+
+  .logout-btn {
+    background-color: #bfeaab; 
+    color: #2b8005;   
+    border: none;
+  }
+
+  .logout-btn i {
+    margin-right: 5px;
+  }
+
+  .navbar-brand img {
+    max-height: 30px; /* Adjust as needed */
+    margin-right: 10px; /* Adjust as needed */
+  }
+  body {
+    background-color: #f8f9fa; /* Set your desired background color */
+  }
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .login-form {
+    max-width: 500px; /* Adjust the width as needed */
+    padding: 20px;
+    background-color: #bfeaab; /* Set the background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .login-logo {
+    max-width: 100px; /* Adjust the width as needed */
+    margin-right: 20px; /* Adjust the margin as needed */
+  }
+  .login-form .btn-primary {
+    background-color: #2b8005;
+  }

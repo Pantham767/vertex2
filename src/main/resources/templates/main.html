@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Logout Page</title>
+  <style>
+ body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #2b8005;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.logo {
+  font-size: 1.5em;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+
+.nav-list li {
+  margin-right: 20px;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: white;
+}
+
+
+
+/* Your existing styles for the navbar */
+
+.button-container {
+  margin: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.body-button {
+  cursor: pointer;
+  padding: 10px 15px;
+    background-color: #2b8005;
+  
+  
+  
+  border: none;
+  color: white;
+  font-size: 16px;
+  margin: 0 10px 10px 10px;
+  border-radius: 5px;
+}
+
+.body-button:hover {
+    background-color: #2b8005;
+}
+.button {
+  display: inline-block;
+  background-color: #2b8005;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 20px 30px;
+  border-radius: 5px;
+  margin: 0 10px 20px 20px;
+  box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  -webkit-transition: all ease-in-out 300ms;
+  transition: all ease-in-out 300ms;
+}
+.button:hover {
+  box-shadow: 0px 37px 20px -20px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translate(0px, -10px) scale(1.2);
+          transform: translate(0px, -10px) scale(1.2);
+}
+.last-button {
+  width: 150px;
+  height: 50px;  
+  background-color: #bfeaab;
+  color: white;
+  border: none;
+  text-align: left;
+  margin-left: 100px;
+  position: relative;
+  padding-left: 30px;
+  transition: .5s all;
+  margin-bottom: 50px;
+}
+.last-button:hover {
+  font-size: 12px;  
+}
+.last-button:hover i {
+  color: white;
+  animation: circle;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+.last-button:active {
+  color: white;
+}
+.last-button i {
+  position: absolute;
+  line-height: 30px;
+  font-size: 30px;
+  left: 90px;
+}
+@keyframes call {
+  0% {
+      transform: scale(1);  
+  } 
+  50% {
+      transform: scale(1.2);
+   }
+  100% {
+      transform: scale(1);
+   }
+}
+@keyframes circle {
+  0% {
+     transform: rotate(0deg);
+  }
+  100% {
+     transform: rotate(360deg);
+  }
+}
+
+.logo {
+  font-size: 1.5em;
+  margin-right: -100px; /* Add this margin to counteract the negative margin on the logo */
+}
+
+.logout-container {
+  margin-left: -190px; /* Adjust this value according to your preference */
+}
+.button-container {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .slideshow-container {
+      max-width: 50%;
+      margin-left: -200px;
+      height: 20%;
+      position: relative;
+      margin: auto;
+    }
+
+    .mySlides {
+      display: none;
+      width: 100%;
+    }
+
+    .fade {
+      animation: fade 2s ease-in-out infinite;
+    }
+
+    @keyframes fade {
+      from { opacity: .4 }
+      to { opacity: 1 }
+    }
+  </style>
+</head>
+<body>  
+
+    <nav class="navbar">
+        <div class="logo" style="margin-left: -400px;">Vartex Pro Serv</div>
+      
+        <div class="logout-container" style="margin-right: 90px;">
+          <button class="btn btn-danger last-button">Logout<i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+      
+      </nav>
+    
+    </div>
+  </div>
+</div>
+<div class="slideshow-container">
+  <div class="mySlides fade">
+    <img src="h1.jpg" alt="Slide 1" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="land.jpg" alt="Slide 2" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="house2.jpg" alt="Slide 2" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="land2.jpg" alt="Slide 2" style="width:100%">
+  </div>
+
+  <!-- Add more slides as needed -->
+
+</div>
+ 
+      <div class="button-container">
+        <div class="button" data-toggle="modal" data-target="#propertyModal">Properties</div>
+       
+        <button class="button" data-toggle="modal" data-target="#viewDocumentListModal" style="border: none;">View Document List</button>
+        <div class="button">Upload Document</div>
+    </div>
+    <div class="modal fade" id="propertyModal" tabindex="-1" role="dialog" aria-labelledby="propertyModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="propertyModalLabel">Property Form</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Property Form Section -->
+              <form onsubmit="submitForm(event)">
+                <div class="form-group">
+                  <label for="propertyType">Property List:</label>
+                  <select class="form-control" id="propertyType" name="propertyType">
+                    <option value="land">Land</option>
+                    <option value="flat">Flat</option>
+                    <option value="individualHouse">Individual House</option>
+                  </select>
+                </div>
+      
+                <div class="form-group">
+                  <label for="propertyAddress">Property Address:</label>
+                  <input type="text" class="form-control" id="propertyAddress" name="propertyAddress">
+                </div>
+      
+                <div class="form-group">
+                  <label for="propertyDetails">Property Details:</label>
+                  <textarea class="form-control" id="propertyDetails" name="propertyDetails"></textarea>
+                </div>
+      
+                <div class="form-group">
+                  <label for="price">Price:</label>
+                  <input type="text" class="form-control" id="price" name="price">
+                </div>
+      
+                <div class="form-group">
+                  <label for="imageUpload1">Upload Image 1:</label>
+                  <input type="file" class="form-control-file" id="imageUpload1" accept="image/*">
+                </div>
+      
+                <div class="form-group">
+                  <label for="imageUpload2">Upload Image 2:</label>
+                  <input type="file" class="form-control-file" id="imageUpload2" accept="image/*">
+                </div>
+      
+                <!-- Add more fields as needed -->
+      
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- Add any additional buttons for the modal footer if needed -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="viewDocumentListModal" tabindex="-1" role="dialog" aria-labelledby="viewDocumentListModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="viewDocumentListModalLabel">Document List</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Table to display the document list -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Property Type</th>
+                    <th>Property Address</th>
+                    <th>Property Details</th>
+                    <th>Price</th>
+                    <th>Image 1</th>
+                    <th>Image 2</th>
+                  </tr>
+                </thead>
+                <tbody id="documentListBody">
+                  <!-- Table body will be populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+function logout() {
+  // Add your logout logic here
+  alert('Logout button clicked. Implement your logout logic.');
+  // Example: redirect to the login page
+   window.location.href = 'main.html';
+}
+
+
+function submitForm(event) {
+  event.preventDefault(); // Prevent the default form submission
+  
+  // Collect form data
+  const propertyType = document.getElementById('propertyType').value;
+  const propertyAddress = document.getElementById('propertyAddress').value;
+  const propertyDetails = document.getElementById('propertyDetails').value;
+  const price = document.getElementById('price').value;
+  const imageUpload1 = document.getElementById('imageUpload1').value; // Note: This is just the file name, not the actual image
+  const imageUpload2 = document.getElementById('imageUpload2').value; // Note: This is just the file name, not the actual image
+  
+  // Construct an object with the collected data
+  const propertyData = {
+    type: propertyType,
+    address: propertyAddress,
+    details: propertyDetails,
+    price: price,
+    image1: imageUpload1,
+    image2: imageUpload2
+  };
+
+  // Retrieve existing data from localStorage
+  const storedData = JSON.parse(localStorage.getItem('propertyData')) || [];
+
+  // Add the new data to the array
+  storedData.push(propertyData);
+
+  // Store the updated array back in localStorage
+  localStorage.setItem('propertyData', JSON.stringify(storedData));
+
+  // Close the modal
+  $('#propertyModal').modal('hide');
+
+  // Refresh the document list
+  refreshDocumentList();
+}
+
+function refreshDocumentList() {
+  const documentListBody = document.getElementById('documentListBody');
+  documentListBody.innerHTML = ''; // Clear the existing content
+
+  // Retrieve data from localStorage
+  const storedData = JSON.parse(localStorage.getItem('propertyData')) || [];
+
+  // Populate the table with the stored data
+  storedData.forEach((data, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${data.type}</td>
+      <td>${data.address}</td>
+      <td>${data.details}</td>
+      <td>${data.price}</td>
+      <td><img src="${data.image1}" alt="Image 1" height="50"></td>
+      <td><img src="${data.image2}" alt="Image 2" height="50"></td>
+      <td><button class="btn btn-danger" onclick="deleteRow(${index})">Delete</button></td>
+    `;
+
+    documentListBody.appendChild(row);
+  });
+}
+
+// Function to delete a row and update localStorage
+function deleteRow(index) {
+  const storedData = JSON.parse(localStorage.getItem('propertyData')) || [];
+  
+  // Remove the selected row from the array
+  storedData.splice(index, 1);
+
+  // Update localStorage with the modified array
+  localStorage.setItem('propertyData', JSON.stringify(storedData));
+
+  // Refresh the document list
+  refreshDocumentList();
+}
+
+// Call refreshDocumentList when the page loads to display existing data
+refreshDocumentList();
+
+// Refresh the document list when the modal is shown
+$('#viewDocumentListModal').on('shown.bs.modal', function () {
+  refreshDocumentList();
+});
+$( document ).ready(function() {
+    $('#button').hover(function() {
+      $('#call').addClass('animated shake');
+    });
+  });
+  let slideIndex = 0;
+
+function showSlides() {
+  let i;
+  const slides = document.getElementsByClassName("mySlides");
+
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  slideIndex++;
+
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+  setTimeout(showSlides, 2000); // Change slide every 2 seconds
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  showSlides();
+});
+</script>
+</body>
+</html>
