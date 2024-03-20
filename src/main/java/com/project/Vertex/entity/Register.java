@@ -16,6 +16,16 @@ public class Register {
 	private String preferredLocation;
 	private String password;
 	private String confirmPassword;
+	private String role = "user";
+
+	
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	
 	
 	public Long getId() {
@@ -69,10 +79,10 @@ public class Register {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-
+	
 	
 	public Register(Long id, String email, String mobileNumber, String preferredLocation, String password,
-			String confirmPassword) {
+			String confirmPassword, String role) {
 		super();
 		Id = id;
 		this.email = email;
@@ -80,13 +90,15 @@ public class Register {
 		this.preferredLocation = preferredLocation;
 		this.password = password;
 		this.confirmPassword = confirmPassword;
+		this.role = role;
 	}
-
+	
 	
 	@Override
 	public String toString() {
 		return "Register [Id=" + Id + ", email=" + email + ", mobileNumber=" + mobileNumber + ", preferredLocation="
-				+ preferredLocation + ", password=" + password + ", confirmPassword=" + confirmPassword + "]";
+				+ preferredLocation + ", password=" + password + ", confirmPassword=" + confirmPassword + ", role="
+				+ role + "]";
 	}
 	public Register() {
 		

@@ -11,6 +11,7 @@
  body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background-color: #bfeaab;
 }
 
 .navbar {
@@ -119,25 +120,6 @@
   font-size: 30px;
   left: 90px;
 }
-@keyframes call {
-  0% {
-      transform: scale(1);  
-  } 
-  50% {
-      transform: scale(1.2);
-   }
-  100% {
-      transform: scale(1);
-   }
-}
-@keyframes circle {
-  0% {
-     transform: rotate(0deg);
-  }
-  100% {
-     transform: rotate(360deg);
-  }
-}
 
 .logo {
   font-size: 1.5em;
@@ -152,27 +134,9 @@
       justify-content: space-around;
     }
 
-    .slideshow-container {
-      max-width: 50%;
-      margin-left: -200px;
-      height: 20%;
-      position: relative;
-      margin: auto;
-    }
+   
 
-    .mySlides {
-      display: none;
-      width: 100%;
-    }
 
-    .fade {
-      animation: fade 2s ease-in-out infinite;
-    }
-
-    @keyframes fade {
-      from { opacity: .4 }
-      to { opacity: 1 }
-    }
   </style>
 </head>
 <body>  
@@ -189,32 +153,15 @@
     </div>
   </div>
 </div>
-<div class="slideshow-container">
-  <div class="mySlides fade">
-    <img src="h1.jpg" alt="Slide 1" style="width:100%">
-  </div>
 
-  <div class="mySlides fade">
-    <img src="land.jpg" alt="Slide 2" style="width:100%">
-  </div>
 
-  <div class="mySlides fade">
-    <img src="house2.jpg" alt="Slide 2" style="width:100%">
-  </div>
 
-  <div class="mySlides fade">
-    <img src="land2.jpg" alt="Slide 2" style="width:100%">
-  </div>
-
-  <!-- Add more slides as needed -->
-
-</div>
- 
       <div class="button-container">
         <div class="button" data-toggle="modal" data-target="#propertyModal">Properties</div>
        
         <button class="button" data-toggle="modal" data-target="#viewDocumentListModal" style="border: none;">View Document List</button>
-        <div class="button">Upload Document</div>
+        <div class="button" data-toggle="modal" data-target="#uploadDocumentModal">Upload Document</div>
+
     </div>
     <div class="modal fade" id="propertyModal" tabindex="-1" role="dialog" aria-labelledby="propertyModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -262,9 +209,8 @@
                   <input type="file" class="form-control-file" id="imageUpload2" accept="image/*">
                 </div>
       
-                <!-- Add more fields as needed -->
-      
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    
+<button type="submit" class="btn btn-primary">Submit</button>
               </form>
             </div>
             <div class="modal-footer">
@@ -301,7 +247,64 @@
                 </tbody>
               </table>
             </div>
+          </div>
+        </div>
+      </div>
+          <div class="modal fade" id="uploadDocumentModal" tabindex="-1" role="dialog" aria-labelledby="uploadDocumentModalLabel" aria-hidden="true">
+            <!-- ... Upload Document Modal content ... -->
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="uploadDocumentModalLabel">Upload Document</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Document Upload Form Section -->
+                  <form onsubmit="uploadDocument(event)">
+                    <div class="form-group">
+                      <label for="documentType">Document Type:</label>
+                      <select class="form-control" id="documentType" name="documentType" onchange="toggleDocumentUpload()">
+                        <option value="other">Other</option>
+                        <option value="pdf">PDF</option>
+                        <option value="word">Word</option>
+                        <!-- Add more document types as needed -->
+                      </select>
+                    </div>
+        
+                    <div class="form-group" id="pdfUploadSection" style="display: none;">
+                      <label for="pdfUpload">Upload PDF:</label>
+                      <input type="file" class="form-control-file" id="pdfUpload" accept=".pdf">
+                    </div>
+        
+                    <div class="form-group" id="wordUploadSection" style="display: none;">
+                      <label for="wordUpload">Upload Word Document:</label>
+                      <input type="file" class="form-control-file" id="wordUpload" accept=".doc, .docx">
+                  </div>
           
+                  <div class="form-group" id="otherUploadSection">
+                      <label for="documentUpload">Upload Document:</label>
+                      <input type="file" class="form-control-file" id="documentUpload" accept=".pdf, .doc, .docx">
+                  </div>
+                    <div class="form-group">
+                      <label for="imageUpload">Upload Image:</label>
+                      <input type="file" class="form-control-file" id="imageUpload" accept="image/*">
+                    </div>
+        
+                    <!-- Add more fields as needed -->
+        
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <!-- Add any additional buttons for the modal footer if needed -->
+                </div>
+              </div>
+            </div>
+          </div>
+
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -425,6 +428,105 @@ function showSlides() {
 document.addEventListener("DOMContentLoaded", function () {
   showSlides();
 });
+// Show overlay and modal
+
+
+// Hide overlay and modal
+function hideModal() {
+  $('#overlay').hide();
+  $('#yourModalId').modal('hide');
+}
+
+// Attach these functions to your modal's show and hide events
+$('#yourModalId').on('show.bs.modal', function () {
+  showModal();
+});
+
+$('#yourModalId').on('hidden.bs.modal', function () {
+  hideModal();
+});
+function toggleDocumentUpload() {
+        const documentType = document.getElementById('documentType').value;
+        const pdfUploadSection = document.getElementById('pdfUploadSection');
+        const wordUploadSection = document.getElementById('wordUploadSection');
+        const otherUploadSection = document.getElementById('otherUploadSection');
+
+        if (documentType === 'pdf') {
+            pdfUploadSection.style.display = 'block';
+            wordUploadSection.style.display = 'none';
+            otherUploadSection.style.display = 'none';
+        } else if (documentType === 'word') {
+            pdfUploadSection.style.display = 'none';
+            wordUploadSection.style.display = 'block';
+            otherUploadSection.style.display = 'none';
+        } else {
+            pdfUploadSection.style.display = 'none';
+            wordUploadSection.style.display = 'none';
+            otherUploadSection.style.display = 'block';
+        }
+    }
+
+    function uploadDocument(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Collect form data
+        const documentType = document.getElementById('documentType').value;
+
+        if (documentType === 'pdf') {
+            const pdfUpload = document.getElementById('pdfUpload').value; // Note: This is just the file name, not the actual PDF
+            // Handle PDF upload logic here
+        } else if (documentType === 'word') {
+            const wordUpload = document.getElementById('wordUpload').value; // Note: This is just the file name, not the actual Word document
+            // Handle Word document upload logic here
+        } else {
+            const documentUpload = document.getElementById('documentUpload').value; // Note: This is just the file name, not the actual document
+            // Handle other document upload logic here
+        }
+
+        // Close the modal
+        $('#uploadDocumentModal').modal('hide');
+
+        // You may want to perform additional actions after successful document upload
+    }
+    $('#uploadDocumentModal').on('show.bs.modal', function () {
+      // Any actions you want to perform when the modal is shown
+    });
+
+    $('#uploadDocumentModal').on('hidden.bs.modal', function () {
+      // Any actions you want to perform when the modal is hidden
+    });
+    function uploadDocument(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Collect form data
+        const documentType = document.getElementById('documentType').value;
+
+        if (documentType === 'pdf') {
+            // Handle PDF upload logic here
+        } else if (documentType === 'word') {
+            const wordUpload = document.getElementById('wordUpload').files[0];
+
+            if (wordUpload) {
+                // Read the contents of the Word document
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    // e.target.result contains the content of the Word document
+                    const wordContent = e.target.result;
+
+                    // Perform actions with the Word document content (e.g., display or process)
+                    console.log("Word document content:", wordContent);
+                };
+
+                reader.readAsText(wordUpload);
+            }
+        } else {
+            const documentUpload = document.getElementById('documentUpload').files[0];
+            // Handle other document upload logic here
+        }
+
+        // Close the modal
+        $('#uploadDocumentModal').modal('hide');
+    }
 </script>
 </body>
 </html>
