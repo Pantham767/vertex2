@@ -29,7 +29,7 @@ public class RegisterController {
 		 @GetMapping("/home")
 		    public String getIndexPage(Model model) {
 		        model.addAttribute("register", new Register()); 
-		        return "index"; 
+		        return "index2";
 		    }
 
 		    @PostMapping("/saveRegister")
@@ -48,5 +48,20 @@ public class RegisterController {
 		        // If no registration data is submitted, simply return to the index page
 		        return "redirect:/home";
 		    }
+
+	@PostMapping("/saveRegister1")
+	public String handleRegistration(@RequestParam("email") String email,
+									 @RequestParam("mobileNumber") String mobileNumber,
+									 @RequestParam("preferredLocation") String preferredLocation,
+									 @RequestParam("password") String password,
+									 @RequestParam("confirmPassword") String confirmPassword,
+									 Model model) {
+		// Handle the registration process using the provided parameters
+		// You can perform validation, save to the database, etc.
+		System.out.println(email);
+
+		// Assuming the registration is successful, you can redirect to the success page
+		return "redirect:/success";
+	}
     
 }

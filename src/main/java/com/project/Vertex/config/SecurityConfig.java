@@ -40,6 +40,7 @@ public class SecurityConfig {
 				.requestMatchers("/forgot-password").permitAll()
 				.requestMatchers("/password-request").permitAll()
 				.requestMatchers("/password").permitAll()
+				.requestMatchers("/saveRegister").permitAll()
 				.requestMatchers("/reset-password").permitAll().anyRequest()
 				.authenticated())
 		
