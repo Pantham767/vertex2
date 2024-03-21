@@ -45,10 +45,10 @@ public class RegisterController {
 		            registerService.saveRegistration(register);
 		            model.addAttribute("message", "Registration successful");
 		           
-		            return "redirect:/home"; 
+		            return "redirect:/index";
 		        }
 		        
-		        return "redirect:/home";
+		        return "redirect:/index";
 		    }
 
 	@GetMapping("/usersuccess")

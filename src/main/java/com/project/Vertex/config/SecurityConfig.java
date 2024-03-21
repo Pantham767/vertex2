@@ -47,7 +47,7 @@ public class SecurityConfig implements WebMvcConfigurer {
 						.requestMatchers("/reset-password").permitAll().anyRequest()
 						.authenticated())
 
-				.formLogin(form -> form.loginPage("/login1").loginProcessingUrl("/login").successHandler(customSuccessHandler)
+				.formLogin(form -> form.loginPage("/").loginProcessingUrl("/loginVerification").successHandler(customSuccessHandler)
 						.permitAll())
 
 				.logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
