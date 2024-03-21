@@ -19,14 +19,18 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 	@Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
+		
 		// Retrieve authorities (roles) of the authenticated user
 	    var authourities = authentication.getAuthorities();
 		var roles = authourities.stream().map(r ->
 				r.getAuthority()).findFirst();
+		
 		if (roles.orElse("").equals("admin")){
-			response.sendRedirect("/main");
+			response.sendRedirect("/adminSuccess");
+			
 		} else if (roles.orElse("").equals("user")) {
-			response.sendRedirect("/usersuccess");
+			response.sendRedirect("/userSuccess");
+			
 		} else {
 			response.sendRedirect("/error");
 		}

@@ -35,8 +35,9 @@ public class SecurityConfig implements WebMvcConfigurer {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
 		http.csrf(c -> c.disable())
-				.authorizeHttpRequests(request -> request.requestMatchers("/main")
-						.hasAuthority("admin").requestMatchers("/usersuccess").hasAuthority("user")
+				.authorizeHttpRequests(request -> request
+						.requestMatchers("/adminSuccess").hasAuthority("admin")
+						.requestMatchers("/userSuccess").hasAuthority("user")
 						.requestMatchers( "/css/**").permitAll()
 						.requestMatchers("/forgot-password").permitAll()
 						.requestMatchers("/password-request").permitAll()
@@ -66,10 +67,6 @@ public class SecurityConfig implements WebMvcConfigurer {
 		auth.userDetailsService(customUserDetailService).passwordEncoder(passwordEncoder());
 	}
 
-	/*@Autowired
-	public void ConfigureAction(AuthenticationManagerBuilder auth)throws Exception{
-		auth.userDetailsService(customUserDetailService).passwordEncoder(passwordEncoder());
-	}*/
 }
 
 

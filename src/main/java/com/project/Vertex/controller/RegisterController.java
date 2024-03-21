@@ -22,12 +22,6 @@ public class RegisterController {
 
 		@Autowired
 		private PasswordEncoder PasswordEncode;
-	
-//		@GetMapping("/home")
-//		public String home() {
-//			//System.out.println("Hi");
-//			return "index";
-//		}
 		
 		
 		 @GetMapping("/")
@@ -51,10 +45,6 @@ public class RegisterController {
 		        return "redirect:/index";
 		    }
 
-	@GetMapping("/usersuccess")
-	public String getIndexPage1(Model model) {
-		//model.addAttribute("register", new Register());
-		return "index1";
-	}
+	
     
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -145,7 +145,7 @@
         <div class="logo" style="margin-left: -400px;">Vartex Pro Serv</div>
       
         <div class="logout-container" style="margin-right: 90px;">
-          <button class="btn btn-danger last-button">Logout<i class="fa-solid fa-right-from-bracket"></i></button>
+          <button class="btn btn-danger last-button" onclick="window.location.href='/'">Logout<i class="fa-solid fa-right-from-bracket"></i></button>
       </div>
       
       </nav>
@@ -172,12 +172,15 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+			
+			
+			
             <div class="modal-body">
               <!-- Property Form Section -->
-              <form onsubmit="submitForm(event)">
+			 <form onsubmit="submitForm(event)" th:action="@{/addPropertyForm}" method="post" th:object="${property}">
                 <div class="form-group">
-                  <label for="propertyType">Property List:</label>
-                  <select class="form-control" id="propertyType" name="propertyType">
+                  <label for="propertyType">Property Type:</label>
+                  <select class="form-control" id="propertyType" name="propertyType" th:field="*{propertyType}">
                     <option value="land">Land</option>
                     <option value="flat">Flat</option>
                     <option value="individualHouse">Individual House</option>
@@ -186,33 +189,36 @@
       
                 <div class="form-group">
                   <label for="propertyAddress">Property Address:</label>
-                  <input type="text" class="form-control" id="propertyAddress" name="propertyAddress">
+                  <input type="text" class="form-control" id="propertyAddress" name="propertyAddress" th:field="*{propertyAddress}">
                 </div>
       
                 <div class="form-group">
                   <label for="propertyDetails">Property Details:</label>
-                  <textarea class="form-control" id="propertyDetails" name="propertyDetails"></textarea>
+                  <textarea class="form-control" id="propertyDetails" name="propertyDetails" th:field="*{propertyDetails}"></textarea>
                 </div>
       
                 <div class="form-group">
                   <label for="price">Price:</label>
-                  <input type="text" class="form-control" id="price" name="price">
+                  <input type="text" class="form-control" id="price" name="price" th:field="*{propertyPrice}">
                 </div>
       
                 <div class="form-group">
                   <label for="imageUpload1">Upload Image 1:</label>
-                  <input type="file" class="form-control-file" id="imageUpload1" accept="image/*">
+                  <input type="file" class="form-control-file" id="imageUpload1" accept="image/*" th:field="*{image1}">
                 </div>
       
                 <div class="form-group">
                   <label for="imageUpload2">Upload Image 2:</label>
-                  <input type="file" class="form-control-file" id="imageUpload2" accept="image/*">
+                  <input type="file" class="form-control-file" id="imageUpload2" accept="image/*" th:field="*{image2}">
                 </div>
-      
-                    
-<button type="submit" class="btn btn-primary">Submit</button>
+     
+				<button type="submit" class="btn btn-primary">Submit</button>
+				
               </form>
             </div>
+			
+			
+			
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <!-- Add any additional buttons for the modal footer if needed -->
@@ -305,10 +311,10 @@
             </div>
           </div>
 
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <script>
 function logout() {
   // Add your logout logic here
