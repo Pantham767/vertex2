@@ -134,7 +134,9 @@
       justify-content: space-around;
     }
 
-   
+.table-container{
+	width: 1200px;
+}
 
 
   </style>
@@ -142,7 +144,7 @@
 <body>  
 
     <nav class="navbar">
-        <div class="logo" style="margin-left: -400px;">Vartex Pro Serv</div>
+        <div class="logo" style="margin-left: -400px;">Vertex Pro Serv</div>
       
         <div class="logout-container" style="margin-right: 90px;">
           <button class="btn btn-danger last-button" onclick="window.location.href='/'">Logout<i class="fa-solid fa-right-from-bracket"></i></button>
@@ -177,7 +179,7 @@
 			
             <div class="modal-body">
               <!-- Property Form Section -->
-			 <form onsubmit="submitForm(event)" th:action="@{/addPropertyForm}" method="post" th:object="${property}">
+			 <form th:action="@{/addPropertyForm}" method="post" th:object="${property}">
                 <div class="form-group">
                   <label for="propertyType">Property Type:</label>
                   <select class="form-control" id="propertyType" name="propertyType" th:field="*{propertyType}">
@@ -227,7 +229,7 @@
         </div>
       </div>
       <div class="modal fade" id="viewDocumentListModal" tabindex="-1" role="dialog" aria-labelledby="viewDocumentListModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog table-container" role="document" >
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="viewDocumentListModalLabel">Document List</h5>
@@ -237,7 +239,7 @@
             </div>
             <div class="modal-body">
               <!-- Table to display the document list -->
-              <table class="table">
+              <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>Property Type</th>
@@ -248,8 +250,16 @@
                     <th>Image 2</th>
                   </tr>
                 </thead>
-                <tbody id="documentListBody">
-                  <!-- Table body will be populated dynamically -->
+                <tbody id="">
+					
+					<tr th:each="property : ${properties}">
+						<td th:text="${property.propertyType}"></td>
+						<td th:text="${property.propertyDetails}"></td>
+						<td th:text="${property.propertyPrice}"></td>
+						<td th:text="${property.propertyAddress}"></td>
+						<td><img th:src="'data:image/jpeg;base64,' + ${property.image1}" /></td>
+						<td><img th:src="'data:image/jpeg;base64,' + ${property.image2}" /></td>
+					</tr>
                 </tbody>
               </table>
             </div>

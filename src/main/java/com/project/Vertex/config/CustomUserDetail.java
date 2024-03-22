@@ -29,7 +29,7 @@ public class CustomUserDetail implements UserDetails {
     @Override
     public String getUsername() {
 
-        
+       // System.out.println(Reg.getEmail());
         return Reg.getEmail();
     }
 

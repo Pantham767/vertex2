@@ -24,12 +24,6 @@ public class RegisterController {
 		private PasswordEncoder PasswordEncode;
 		
 		
-		 @GetMapping("/")
-		    public String getIndexPage(Model model) {
-		        model.addAttribute("register", new Register()); 
-		        return "index";
-		    }
-
 		    @PostMapping("/saveRegister")
 		    public String handleRegistration(@ModelAttribute("register") Register register, Model model) {
 		       
@@ -39,10 +33,10 @@ public class RegisterController {
 		            registerService.saveRegistration(register);
 		            model.addAttribute("message", "Registration successful");
 		           
-		            return "redirect:/index";
+		            return "index";
 		        }
 		        
-		        return "redirect:/index";
+		        return "index";
 		    }
 
 	
